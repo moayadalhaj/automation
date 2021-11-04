@@ -25,7 +25,7 @@ find_phone_numbers()
 def find_emails():
     cleaned_emails = re.findall(r'[\w.+-_]+@[\w-]+.\w+', content)
     cleaned_emails = sorted(cleaned_emails)
-
+    cleaned_emails = list(dict.fromkeys(cleaned_emails))
     with open('emails.txt','w+') as file:
         for email in cleaned_emails:
             file.write(f'{email}\n')
